@@ -6,7 +6,8 @@ public class SpringSecurityDispatcherInitializer extends AbstractAnnotationConfi
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[]{AppSecurityConfig.class};
+//		return new Class[]{AppSecurityConfig.class};
+		return null;
 	}
 
 	@Override
