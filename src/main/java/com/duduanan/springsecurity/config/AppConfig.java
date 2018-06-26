@@ -4,6 +4,7 @@ import java.beans.PropertyVetoException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,6 +25,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @PropertySource("classpath:db.properties")
 @ComponentScan(basePackages="com.duduanan.springsecurity")
 public class AppConfig implements WebMvcConfigurer{
+	@Autowired
 	private Environment env;
 	
 	@Bean 
@@ -34,6 +36,7 @@ public class AppConfig implements WebMvcConfigurer{
 		} catch (PropertyVetoException e) {
 			e.printStackTrace();
 		}
+		System.out.println(env.getProperty("mysql.jdbcUrl"));
 		dataSource.setJdbcUrl(env.getProperty("mysql.jdbcUrl"));
 		dataSource.setUser(env.getProperty("mysql.username"));
 		dataSource.setPassword(env.getProperty("mysql.password"));
